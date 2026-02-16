@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Material - Nursedemic</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="fas fa-hospital-user"></i> Nursedemic
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="study-material.html">Study Material</a></li>
+                    <li class="nav-item"><a class="nav-link" href="career-guidance.html">Career Guidance</a></li>
+                    <li class="nav-item"><a class="nav-link" href="e-library.html">e-Library</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ai-chatbot.html">AI Chatbot</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header study-material-hero text-white py-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Study Materials</h1>
+            <p class="lead">Comprehensive notes, e-books, presentations, and videos for your nursing education</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section py-4 bg-light border-bottom">
+        <div class="container">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-4">
+                    <label for="resourceFilter" class="form-label fw-bold">Filter by Resource Type</label>
+                    <select id="resourceFilter" class="form-select" onchange="filterResources()">
+                        <option value="">All Resources</option>
+                        <option value="notes">Nursing Notes</option>
+                        <option value="ebooks">E-Books</option>
+                        <option value="presentations">PowerPoint Presentations</option>
+                        <option value="videos">Videos</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="subjectFilter" class="form-label fw-bold">Filter by Subject</label>
+                    <select id="subjectFilter" class="form-select" onchange="filterResources()">
+                        <option value="">All Subjects</option>
+                        <option value="anatomy">Anatomy & Physiology</option>
+                        <option value="pharmacology">Pharmacology</option>
+                        <option value="clinical">Clinical Nursing</option>
+                        <option value="surgical">Surgical Nursing</option>
+                        <option value="pediatric">Pediatric Nursing</option>
+                        <option value="medical">Medical Nursing</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="searchMaterial" class="form-label fw-bold">Search Materials</label>
+                    <input type="text" id="searchMaterial" class="form-control" placeholder="Search by title..." onkeyup="filterResources()">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Study Materials Section -->
+    <section class="study-material-section py-5">
+        <div class="container">
+            <!-- Nursing Notes -->
+            <h2 class="fw-bold mb-4 text-primary">
+                <i class="fas fa-notes-medical"></i> Nursing Notes
+            </h2>
+            <div class="row g-4 mb-5" id="notesContainer">
+                <div class="col-md-6 col-lg-4 material-card" data-type="notes" data-subject="anatomy">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-file-alt text-primary" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Anatomy & Physiology Fundamentals</h5>
+                            <p class="card-text text-muted text-sm">Comprehensive notes covering basic anatomy and physiological concepts essential for nursing practice.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-info">Anatomy</span>
+                                <span class="badge bg-secondary">Beginner</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <button class="btn btn-sm btn-outline-primary me-2" onclick="previewMaterial()">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <a href="assets/documents/anatomy_physiology.pdf" class="btn btn-sm btn-primary" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 material-card" data-type="notes" data-subject="pharmacology">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-file-alt text-primary" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Pharmacology for Nurses</h5>
+                            <p class="card-text text-muted text-sm">Detailed notes on drug classifications, mechanisms of action, and nursing considerations.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-info">Pharmacology</span>
+                                <span class="badge bg-secondary">Intermediate</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <button class="btn btn-sm btn-outline-primary me-2" onclick="previewMaterial()">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <a href="assets/documents/pharmacology.pdf" class="btn btn-sm btn-primary" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 material-card" data-type="notes" data-subject="clinical">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-file-alt text-primary" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Clinical Nursing Procedures</h5>
+                            <p class="card-text text-muted text-sm">Step-by-step procedures and best practices for clinical nursing interventions.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-info">Clinical</span>
+                                <span class="badge bg-secondary">Intermediate</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <button class="btn btn-sm btn-outline-primary me-2" onclick="previewMaterial()">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <a href="assets/documents/clinical_procedures.pdf" class="btn btn-sm btn-primary" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E-Books -->
+            <h2 class="fw-bold mb-4 text-success">
+                <i class="fas fa-book"></i> E-Books
+            </h2>
+            <div class="row g-4 mb-5" id="ebooksContainer">
+                <div class="col-md-6 col-lg-4 material-card" data-type="ebooks" data-subject="surgical">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-book text-success" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Surgical Nursing Essentials</h5>
+                            <p class="card-text text-muted text-sm">Complete e-book covering pre-operative, intra-operative, and post-operative nursing care.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-warning">Surgical</span>
+                                <span class="badge bg-secondary">Advanced</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <button class="btn btn-sm btn-outline-success me-2" onclick="previewMaterial()">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <a href="assets/documents/surgical_nursing.pdf" class="btn btn-sm btn-success" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 material-card" data-type="ebooks" data-subject="pediatric">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-book text-success" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Pediatric Nursing Handbook</h5>
+                            <p class="card-text text-muted text-sm">Comprehensive guide to caring for infants, children, and adolescents in various health conditions.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-warning">Pediatric</span>
+                                <span class="badge bg-secondary">Intermediate</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <button class="btn btn-sm btn-outline-success me-2" onclick="previewMaterial()">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <a href="assets/documents/pediatric_nursing.pdf" class="btn btn-sm btn-success" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 material-card" data-type="ebooks" data-subject="medical">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-book text-success" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Medical Nursing Reference</h5>
+                            <p class="card-text text-muted text-sm">Detailed reference guide for medical-surgical nursing conditions and management.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-warning">Medical</span>
+                                <span class="badge bg-secondary">Advanced</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <button class="btn btn-sm btn-outline-success me-2" onclick="previewMaterial()">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <a href="assets/documents/medical_nursing.pdf" class="btn btn-sm btn-success" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PowerPoint Presentations -->
+            <h2 class="fw-bold mb-4 text-warning">
+                <i class="fas fa-presentation"></i> PowerPoint Presentations
+            </h2>
+            <div class="row g-4 mb-5" id="presentationsContainer">
+                <div class="col-md-6 col-lg-4 material-card" data-type="presentations" data-subject="anatomy">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-presentation text-warning" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Human Physiology Systems</h5>
+                            <p class="card-text text-muted text-sm">Interactive presentation covering major body systems and their functions.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-info">Anatomy</span>
+                                <span class="badge bg-secondary">Beginner</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <button class="btn btn-sm btn-outline-warning me-2" onclick="previewMaterial()">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <a href="assets/documents/physiology_systems.ppt" class="btn btn-sm btn-warning" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 material-card" data-type="presentations" data-subject="pharmacology">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-presentation text-warning" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Drug Administration Routes</h5>
+                            <p class="card-text text-muted text-sm">Comprehensive presentation on various routes of drug administration in nursing.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-info">Pharmacology</span>
+                                <span class="badge bg-secondary">Intermediate</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <button class="btn btn-sm btn-outline-warning me-2" onclick="previewMaterial()">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <a href="assets/documents/drug_routes.ppt" class="btn btn-sm btn-warning" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 material-card" data-type="presentations" data-subject="clinical">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-presentation text-warning" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Patient Assessment Skills</h5>
+                            <p class="card-text text-muted text-sm">Presentation on comprehensive patient assessment and vital signs monitoring.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-info">Clinical</span>
+                                <span class="badge bg-secondary">Intermediate</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <button class="btn btn-sm btn-outline-warning me-2" onclick="previewMaterial()">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <a href="assets/documents/patient_assessment.ppt" class="btn btn-sm btn-warning" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Videos -->
+            <h2 class="fw-bold mb-4 text-danger">
+                <i class="fas fa-video"></i> Videos
+            </h2>
+            <div class="row g-4" id="videosContainer">
+                <div class="col-md-6 col-lg-4 material-card" data-type="videos" data-subject="clinical">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-video text-danger" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">IV Cannulation Technique</h5>
+                            <p class="card-text text-muted text-sm">Step-by-step video tutorial on proper intravenous cannulation procedure.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-info">Clinical</span>
+                                <span class="badge bg-secondary">Intermediate</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <button class="btn btn-sm btn-outline-danger me-2" onclick="playVideo('video1')">
+                                <i class="fas fa-play"></i> Play
+                            </button>
+                            <a href="#" class="btn btn-sm btn-danger" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 material-card" data-type="videos" data-subject="medical">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-video text-danger" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Vital Signs Monitoring</h5>
+                            <p class="card-text text-muted text-sm">Complete video guide on measuring and recording vital signs accurately.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-info">Medical</span>
+                                <span class="badge bg-secondary">Beginner</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <button class="btn btn-sm btn-outline-danger me-2" onclick="playVideo('video2')">
+                                <i class="fas fa-play"></i> Play
+                            </button>
+                            <a href="#" class="btn btn-sm btn-danger" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 material-card" data-type="videos" data-subject="pediatric">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-video text-danger" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Pediatric CPR Techniques</h5>
+                            <p class="card-text text-muted text-sm">Video demonstration of cardiopulmonary resuscitation techniques for children.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-info">Pediatric</span>
+                                <span class="badge bg-secondary">Advanced</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <button class="btn btn-sm btn-outline-danger me-2" onclick="playVideo('video3')">
+                                <i class="fas fa-play"></i> Play
+                            </button>
+                            <a href="#" class="btn btn-sm btn-danger" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Nursedemic</h5>
+                    <p class="text-muted">Your comprehensive nursing education platform for academic excellence and career growth.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-white me-3 hover-effect"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3 hover-effect"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3 hover-effect"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-white hover-effect"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted text-decoration-none hover-link">Home</a></li>
+                        <li><a href="about.html" class="text-muted text-decoration-none hover-link">About</a></li>
+                        <li><a href="study-material.html" class="text-muted text-decoration-none hover-link">Study Materials</a></li>
+                        <li><a href="career-guidance.html" class="text-muted text-decoration-none hover-link">Career Guidance</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="e-library.html" class="text-muted text-decoration-none hover-link">e-Library</a></li>
+                        <li><a href="ai-chatbot.html" class="text-muted text-decoration-none hover-link">AI Chatbot</a></li>
+                        <li><a href="contact.html" class="text-muted text-decoration-none hover-link">Contact Us</a></li>
+                        <li><a href="login.html" class="text-muted text-decoration-none hover-link">Login/Signup</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Contact Info</h5>
+                    <p class="text-muted"><i class="fas fa-envelope"></i> info@nursedemic.com</p>
+                    <p class="text-muted"><i class="fas fa-phone"></i> +1 (800) 123-4567</p>
+                    <p class="text-muted"><i class="fas fa-map-marker-alt"></i> Nursing Hub, Education City</p>
+                </div>
+            </div>
+            <hr class="bg-secondary mt-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">&copy; 2026 Nursedemic. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-muted text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chatbot Floating Button -->
+    <button id="chatbotBtn" class="chatbot-floating-btn" onclick="openChatbot()">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

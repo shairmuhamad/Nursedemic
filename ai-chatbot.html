@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot - Nursedemic</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="fas fa-hospital-user"></i> Nursedemic
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="study-material.html">Study Material</a></li>
+                    <li class="nav-item"><a class="nav-link" href="career-guidance.html">Career Guidance</a></li>
+                    <li class="nav-item"><a class="nav-link" href="e-library.html">e-Library</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="ai-chatbot.html">AI Chatbot</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header chatbot-hero text-white py-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold">
+                <i class="fas fa-robot"></i> AI Chatbot Assistant
+            </h1>
+            <p class="lead">Get instant guidance on studies, exams, career, and nursing topics</p>
+        </div>
+    </section>
+
+    <!-- Main Chatbot Section -->
+    <section class="chatbot-section py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Chatbot Interface -->
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-lg h-100 d-flex flex-column">
+                        <div class="card-header bg-info text-white fw-bold d-flex align-items-center">
+                            <i class="fas fa-robot me-2"></i>
+                            Nursedemic AI Assistant
+                            <small class="ms-auto">Online & Ready to Help</small>
+                        </div>
+                        <div id="chatContainer" class="card-body chat-container" style="height: 500px; overflow-y: auto; background-color: #f8f9fa;">
+                            <!-- Chat messages will appear here -->
+                            <div class="message bot-message mb-3">
+                                <div class="message-content bg-light p-3 rounded">
+                                    <strong>AI Assistant:</strong> Hello! I'm your Nursedemic AI assistant. I'm here to help you with:
+                                    <ul class="mt-2 mb-0">
+                                        <li>Nursing study materials and concepts</li>
+                                        <li>Exam preparation guidance (NCLEX, board exams)</li>
+                                        <li>Career tips and job opportunities</li>
+                                        <li>Recommendations for e-books and notes</li>
+                                        <li>General nursing questions and advice</li>
+                                    </ul>
+                                    How can I assist you today?
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <div class="input-group">
+                                <input type="text" id="chatInput" class="form-control" placeholder="Type your question here..." onkeypress="handleEnter(event)">
+                                <button class="btn btn-info" type="button" onclick="sendMessage()">
+                                    <i class="fas fa-paper-plane"></i> Send
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Questions Sidebar -->
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-header bg-primary text-white fw-bold">
+                            <i class="fas fa-lightbulb"></i> Quick Questions
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted small">Click any question to get instant answers:</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-primary text-start" onclick="askQuestion('What are the best study tips for nursing exams?')">
+                                    <i class="fas fa-check"></i> Study Tips
+                                </button>
+                                <button class="btn btn-outline-primary text-start" onclick="askQuestion('How to prepare for NCLEX exam?')">
+                                    <i class="fas fa-check"></i> NCLEX Preparation
+                                </button>
+                                <button class="btn btn-outline-primary text-start" onclick="askQuestion('What are the current job opportunities for nurses?')">
+                                    <i class="fas fa-check"></i> Job Opportunities
+                                </button>
+                                <button class="btn btn-outline-primary text-start" onclick="askQuestion('Explain the cardiovascular system?')">
+                                    <i class="fas fa-check"></i> Anatomy & Physiology
+                                </button>
+                                <button class="btn btn-outline-primary text-start" onclick="askQuestion('What nursing specializations are available?')">
+                                    <i class="fas fa-check"></i> Specializations
+                                </button>
+                                <button class="btn btn-outline-primary text-start" onclick="askQuestion('How to improve clinical skills?')">
+                                    <i class="fas fa-check"></i> Clinical Skills
+                                </button>
+                                <button class="btn btn-outline-primary text-start" onclick="askQuestion('What are scholarship opportunities?')">
+                                    <i class="fas fa-check"></i> Scholarships
+                                </button>
+                                <button class="btn btn-outline-primary text-start" onclick="askQuestion('How to ace nursing interviews?')">
+                                    <i class="fas fa-check"></i> Interview Tips
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="card border-0 shadow-lg mt-4">
+                        <div class="card-header bg-success text-white fw-bold">
+                            <i class="fas fa-star"></i> Features
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success"></i> <strong>24/7 Available</strong> - Get help anytime</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success"></i> <strong>Instant Responses</strong> - Quick answers to queries</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success"></i> <strong>Personalized Recommendations</strong> - Get resources based on your needs</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success"></i> <strong>Study Assistance</strong> - Help with nursing concepts</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success"></i> <strong>Career Guidance</strong> - Tips for job search and advancement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Capabilities Section -->
+    <section class="capabilities-section py-5 bg-light">
+        <div class="container">
+            <h2 class="fw-bold mb-5 text-center text-primary">What Our AI Chatbot Can Help With</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm text-center hover-card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-book text-primary" style="font-size: 2.5rem;"></i>
+                            <h5 class="card-title fw-bold mt-3">Study Materials</h5>
+                            <p class="card-text text-muted">Get recommendations for notes, e-books, and videos on specific nursing topics.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm text-center hover-card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-graduation-cap text-success" style="font-size: 2.5rem;"></i>
+                            <h5 class="card-title fw-bold mt-3">Exam Prep</h5>
+                            <p class="card-text text-muted">Get guidance on NCLEX, board exams, and specialty certifications.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm text-center hover-card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-briefcase text-info" style="font-size: 2.5rem;"></i>
+                            <h5 class="card-title fw-bold mt-3">Career Advice</h5>
+                            <p class="card-text text-muted">Career tips, job search strategies, and professional development guidance.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm text-center hover-card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-stethoscope text-warning" style="font-size: 2.5rem;"></i>
+                            <h5 class="card-title fw-bold mt-3">Nursing Concepts</h5>
+                            <p class="card-text text-muted">Explain nursing theories, clinical procedures, and patient care concepts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section py-5">
+        <div class="container">
+            <h2 class="fw-bold mb-5 text-center text-primary">Frequently Asked Questions</h2>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    How accurate is the AI chatbot information?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our AI is trained on reliable nursing resources and academic materials. However, it's always recommended to verify critical medical information with official sources and your healthcare instructors.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Can the chatbot help me with homework?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes! The chatbot can provide explanations, study tips, and guidance on nursing concepts to help you understand topics better.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Is my conversation data private?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Your privacy is important to us. All conversations are encrypted and stored securely according to our privacy policy. We don't share your data with third parties.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Can I get personalized study recommendations?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Absolutely! Tell the chatbot about your learning goals, strengths, and areas of improvement. It will provide personalized recommendations for study materials and resources.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    How often is the chatbot updated with new information?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our AI is continuously updated with the latest nursing guidelines, exam information, and job opportunities to ensure you receive current and relevant information.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Nursedemic</h5>
+                    <p class="text-muted">Your comprehensive nursing education platform for academic excellence and career growth.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-white me-3 hover-effect"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3 hover-effect"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3 hover-effect"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-white hover-effect"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted text-decoration-none hover-link">Home</a></li>
+                        <li><a href="about.html" class="text-muted text-decoration-none hover-link">About</a></li>
+                        <li><a href="study-material.html" class="text-muted text-decoration-none hover-link">Study Materials</a></li>
+                        <li><a href="career-guidance.html" class="text-muted text-decoration-none hover-link">Career Guidance</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="e-library.html" class="text-muted text-decoration-none hover-link">e-Library</a></li>
+                        <li><a href="ai-chatbot.html" class="text-muted text-decoration-none hover-link">AI Chatbot</a></li>
+                        <li><a href="contact.html" class="text-muted text-decoration-none hover-link">Contact Us</a></li>
+                        <li><a href="login.html" class="text-muted text-decoration-none hover-link">Login/Signup</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Contact Info</h5>
+                    <p class="text-muted"><i class="fas fa-envelope"></i> info@nursedemic.com</p>
+                    <p class="text-muted"><i class="fas fa-phone"></i> +1 (800) 123-4567</p>
+                    <p class="text-muted"><i class="fas fa-map-marker-alt"></i> Nursing Hub, Education City</p>
+                </div>
+            </div>
+            <hr class="bg-secondary mt-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">&copy; 2026 Nursedemic. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-muted text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

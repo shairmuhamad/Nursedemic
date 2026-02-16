@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup - Nursedemic</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="fas fa-hospital-user"></i> Nursedemic
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="study-material.html">Study Material</a></li>
+                    <li class="nav-item"><a class="nav-link" href="career-guidance.html">Career Guidance</a></li>
+                    <li class="nav-item"><a class="nav-link" href="e-library.html">e-Library</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ai-chatbot.html">AI Chatbot</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Section -->
+    <section class="login-section py-5 min-vh-100 d-flex align-items-center" style="background: linear-gradient(135deg, rgba(0, 102, 204, 0.85) 0%, rgba(23, 162, 184, 0.85) 100%), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=800&fit=crop') center/cover fixed;">
+        <div class="container">
+            <div class="row">
+                <!-- Left Side - Info -->
+                <div class="col-lg-6 d-none d-lg-flex align-items-center">
+                    <div>
+                        <h2 class="fw-bold mb-4 text-white display-5">Welcome Back to Nursedemic</h2>
+                        <p class="lead text-light mb-4">Access your personalized learning dashboard, saved materials, and career tracking.</p>
+                        
+                        <div class="mb-5">
+                            <h5 class="fw-bold mb-3 text-white">
+                                <i class="fas fa-check-circle text-warning me-2"></i>Why Create an Account?
+                            </h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-3 text-white">
+                                    <i class="fas fa-bookmark text-warning"></i>
+                                    <strong>Save Your Progress</strong> - Bookmark notes and materials for easy access
+                                </li>
+                                <li class="mb-3 text-white">
+                                    <i class="fas fa-upload text-warning"></i>
+                                    <strong>Upload Content</strong> - Share your study materials and contribute to the community
+                                </li>
+                                <li class="mb-3 text-white">
+                                    <i class="fas fa-chart-line text-warning"></i>
+                                    <strong>Track Your Learning</strong> - Monitor your progress and study statistics
+                                </li>
+                                <li class="mb-3 text-white">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <strong>Personalized Recommendations</strong> - Get AI-powered study suggestions
+                                </li>
+                                <li class="mb-3 text-white">
+                                    <i class="fas fa-bell text-warning"></i>
+                                    <strong>Job Alerts</strong> - Get notifications on new career opportunities
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Forms -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-lg">
+                        <!-- Tab Navigation -->
+                        <div class="card-header bg-white border-bottom">
+                            <ul class="nav nav-tabs border-0" id="authTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active fw-bold" id="login-tab" data-bs-toggle="tab" data-bs-target="#loginForm" type="button" role="tab">
+                                        <i class="fas fa-sign-in-alt"></i> Login
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link fw-bold" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signupForm" type="button" role="tab">
+                                        <i class="fas fa-user-plus"></i> Signup
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Tab Content -->
+                        <div class="card-body p-5">
+                            <div class="tab-content" id="authTabContent">
+                                <!-- Login Form -->
+                                <div class="tab-pane fade show active" id="loginForm" role="tabpanel">
+                                    <h3 class="fw-bold mb-4">Sign In to Your Account</h3>
+                                    <form id="loginFormElement" method="POST" action="php/login_user.php">
+                                        <div class="mb-4">
+                                            <label for="loginEmail" class="form-label fw-bold">Email Address *</label>
+                                            <input type="email" class="form-control form-control-lg" id="loginEmail" name="email" placeholder="Enter your email" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="loginPassword" class="form-label fw-bold">Password *</label>
+                                            <input type="password" class="form-control form-control-lg" id="loginPassword" name="password" placeholder="Enter your password" required>
+                                        </div>
+
+                                        <div class="mb-4 d-flex justify-content-between align-items-center">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="rememberMe" name="remember">
+                                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                                            </div>
+                                            <a href="#" class="text-primary text-decoration-none">Forgot password?</a>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                                            <i class="fas fa-sign-in-alt"></i> Sign In
+                                        </button>
+                                    </form>
+
+                                    <div class="mt-4 text-center">
+                                        <p class="text-muted">Don't have an account? <a href="#" data-bs-toggle="tab" data-bs-target="#signupForm" class="text-primary fw-bold">Sign up here</a></p>
+                                    </div>
+                                </div>
+
+                                <!-- Signup Form -->
+                                <div class="tab-pane fade" id="signupForm" role="tabpanel">
+                                    <h3 class="fw-bold mb-4">Create a New Account</h3>
+                                    <form id="signupFormElement" method="POST" action="php/register_user.php">
+                                        <div class="mb-4">
+                                            <label for="signupName" class="form-label fw-bold">Full Name *</label>
+                                            <input type="text" class="form-control form-control-lg" id="signupName" name="name" placeholder="Enter your full name" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label for="signupEmail" class="form-label fw-bold">Email Address *</label>
+                                            <input type="email" class="form-control form-control-lg" id="signupEmail" name="email" placeholder="Enter your email" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label for="signupRole" class="form-label fw-bold">I am a *</label>
+                                            <select class="form-select form-select-lg" id="signupRole" name="role" required>
+                                                <option value="">Select your role</option>
+                                                <option value="student">Nursing Student</option>
+                                                <option value="professional">Nursing Professional</option>
+                                                <option value="educator">Educator/Instructor</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label for="signupPassword" class="form-label fw-bold">Password *</label>
+                                            <input type="password" class="form-control form-control-lg" id="signupPassword" name="password" placeholder="Create a strong password" required>
+                                            <small class="text-muted">Minimum 8 characters with uppercase, lowercase, and numbers</small>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label for="signupConfirmPassword" class="form-label fw-bold">Confirm Password *</label>
+                                            <input type="password" class="form-control form-control-lg" id="signupConfirmPassword" name="confirm_password" placeholder="Confirm your password" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="agreeTerms" name="agree_terms" required>
+                                                <label class="form-check-label" for="agreeTerms">
+                                                    I agree to the <a href="#" class="text-primary text-decoration-none">Terms of Service</a> and <a href="#" class="text-primary text-decoration-none">Privacy Policy</a> *
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-success btn-lg w-100">
+                                            <i class="fas fa-user-plus"></i> Create Account
+                                        </button>
+                                    </form>
+
+                                    <div class="mt-4 text-center">
+                                        <p class="text-muted">Already have an account? <a href="#" data-bs-toggle="tab" data-bs-target="#loginForm" class="text-primary fw-bold">Sign in here</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Info -->
+                    <div class="mt-4 p-4 bg-white rounded shadow-sm">
+                        <h5 class="fw-bold mb-3">
+                            <i class="fas fa-shield-alt text-success"></i> Your Data is Secure
+                        </h5>
+                        <p class="text-muted small mb-0">We use industry-standard encryption to protect your personal information. Your privacy is our priority.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Nursedemic</h5>
+                    <p class="text-muted">Your comprehensive nursing education platform for academic excellence and career growth.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-white me-3 hover-effect"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3 hover-effect"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3 hover-effect"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-white hover-effect"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted text-decoration-none hover-link">Home</a></li>
+                        <li><a href="about.html" class="text-muted text-decoration-none hover-link">About</a></li>
+                        <li><a href="study-material.html" class="text-muted text-decoration-none hover-link">Study Materials</a></li>
+                        <li><a href="career-guidance.html" class="text-muted text-decoration-none hover-link">Career Guidance</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="e-library.html" class="text-muted text-decoration-none hover-link">e-Library</a></li>
+                        <li><a href="ai-chatbot.html" class="text-muted text-decoration-none hover-link">AI Chatbot</a></li>
+                        <li><a href="contact.html" class="text-muted text-decoration-none hover-link">Contact Us</a></li>
+                        <li><a href="login.html" class="text-muted text-decoration-none hover-link">Login/Signup</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Contact Info</h5>
+                    <p class="text-muted"><i class="fas fa-envelope"></i> info@nursedemic.com</p>
+                    <p class="text-muted"><i class="fas fa-phone"></i> +1 (800) 123-4567</p>
+                    <p class="text-muted"><i class="fas fa-map-marker-alt"></i> Nursing Hub, Education City</p>
+                </div>
+            </div>
+            <hr class="bg-secondary mt-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">&copy; 2026 Nursedemic. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-muted text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chatbot Floating Button -->
+    <button id="chatbotBtn" class="chatbot-floating-btn" onclick="openChatbot()">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nursedemic - Digital Nursing Education & Career Guidance</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="fas fa-hospital-user"></i> Nursedemic
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="study-material.html">Study Material</a></li>
+                    <li class="nav-item"><a class="nav-link" href="career-guidance.html">Career Guidance</a></li>
+                    <li class="nav-item"><a class="nav-link" href="e-library.html">e-Library</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ai-chatbot.html">AI Chatbot</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="search-bar-container bg-light py-3 border-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control search-input" placeholder="Search study materials, notes, career guidance..." id="searchInput">
+                        <button class="btn btn-primary" type="button" onclick="searchMaterials()">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section py-5 text-center text-white">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Welcome to Nursedemic</h1>
+            <p class="lead mb-4">Your Comprehensive Platform for Nursing Education, Career Guidance & Professional Development</p>
+            <div class="hero-buttons">
+                <a href="study-material.html" class="btn btn-light btn-lg me-3 hover-effect">
+                    <i class="fas fa-book"></i> Explore Study Materials
+                </a>
+                <a href="ai-chatbot.html" class="btn btn-outline-light btn-lg hover-effect">
+                    <i class="fas fa-robot"></i> Chat with AI
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Cards -->
+    <section class="features-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">What Nursedemic Offers</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card card border-0 shadow-sm hover-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-book-open text-primary" style="font-size: 3rem;"></i>
+                            <h5 class="card-title mt-3 fw-bold">Study Materials</h5>
+                            <p class="card-text text-muted">Comprehensive notes, e-books, presentations, and videos for academic excellence</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card card border-0 shadow-sm hover-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-briefcase text-success" style="font-size: 3rem;"></i>
+                            <h5 class="card-title mt-3 fw-bold">Career Guidance</h5>
+                            <p class="card-text text-muted">Job opportunities, interview prep, scholarships, and professional development tips</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card card border-0 shadow-sm hover-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-robot text-info" style="font-size: 3rem;"></i>
+                            <h5 class="card-title mt-3 fw-bold">AI Chatbot</h5>
+                            <p class="card-text text-muted">24/7 guidance on studies, exams, careers, and personalized recommendations</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card card border-0 shadow-sm hover-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-library text-warning" style="font-size: 3rem;"></i>
+                            <h5 class="card-title mt-3 fw-bold">e-Library</h5>
+                            <p class="card-text text-muted">Searchable repository of books, journals, PDFs, and academic resources</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carousel/Slider -->
+    <section class="carousel-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Latest Updates & Featured Resources</h2>
+            <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="carousel-content bg-gradient-secondary p-5 rounded text-white">
+                            <h3 class="fw-bold">New: Advanced Pharmacology Notes</h3>
+                            <p>Comprehensive and detailed notes on pharmacology covering all nursing concepts. Updated for current exam standards.</p>
+                            <a href="study-material.html" class="btn btn-light">Download Now</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-content bg-gradient-info p-5 rounded text-white">
+                            <h3 class="fw-bold">Career Tip: Ace Your NCLEX Exam</h3>
+                            <p>Expert strategies and study plans to help you pass the NCLEX on your first attempt. Top tips from nursing professionals.</p>
+                            <a href="career-guidance.html" class="btn btn-light">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-content bg-gradient-success p-5 rounded text-white">
+                            <h3 class="fw-bold">Job Opportunities: Government Hospital Positions</h3>
+                            <p>Multiple nursing positions available in leading government hospitals. Apply now for exciting career opportunities.</p>
+                            <a href="career-guidance.html" class="btn btn-light">View Jobs</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quick-links-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Quick Access</h2>
+            <div class="row g-3 text-center">
+                <div class="col-md-3">
+                    <a href="study-material.html" class="quick-link-btn btn btn-primary btn-lg w-100 hover-effect">
+                        <i class="fas fa-notes-medical"></i><br>Nursing Notes
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="study-material.html" class="quick-link-btn btn btn-success btn-lg w-100 hover-effect">
+                        <i class="fas fa-file-pdf"></i><br>E-Books
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="ai-chatbot.html" class="quick-link-btn btn btn-info btn-lg w-100 hover-effect">
+                        <i class="fas fa-comments"></i><br>Ask AI
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="e-library.html" class="quick-link-btn btn btn-warning btn-lg w-100 hover-effect">
+                        <i class="fas fa-search"></i><br>Search Library
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h3 class="fw-bold mb-3">Stay Updated</h3>
+                    <p>Subscribe to our newsletter for latest study materials, career tips, and job opportunities.</p>
+                </div>
+                <div class="col-md-6">
+                    <form id="newsletterForm">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email" required>
+                            <button class="btn btn-light fw-bold" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Nursedemic</h5>
+                    <p class="text-muted">Your comprehensive nursing education platform for academic excellence and career growth.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-white me-3 hover-effect"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3 hover-effect"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3 hover-effect"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-white hover-effect"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted text-decoration-none hover-link">Home</a></li>
+                        <li><a href="about.html" class="text-muted text-decoration-none hover-link">About</a></li>
+                        <li><a href="study-material.html" class="text-muted text-decoration-none hover-link">Study Materials</a></li>
+                        <li><a href="career-guidance.html" class="text-muted text-decoration-none hover-link">Career Guidance</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="e-library.html" class="text-muted text-decoration-none hover-link">e-Library</a></li>
+                        <li><a href="ai-chatbot.html" class="text-muted text-decoration-none hover-link">AI Chatbot</a></li>
+                        <li><a href="contact.html" class="text-muted text-decoration-none hover-link">Contact Us</a></li>
+                        <li><a href="login.html" class="text-muted text-decoration-none hover-link">Login/Signup</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold mb-3">Contact Info</h5>
+                    <p class="text-muted"><i class="fas fa-envelope"></i> info@nursedemic.com</p>
+                    <p class="text-muted"><i class="fas fa-phone"></i> +1 (800) 123-4567</p>
+                    <p class="text-muted"><i class="fas fa-map-marker-alt"></i> Nursing Hub, Education City</p>
+                </div>
+            </div>
+            <hr class="bg-secondary mt-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">&copy; 2026 Nursedemic. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-muted text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chatbot Floating Button -->
+    <button id="chatbotBtn" class="chatbot-floating-btn" onclick="openChatbot()">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
